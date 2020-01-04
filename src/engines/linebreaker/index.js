@@ -40,7 +40,7 @@ const breakLines = (string, nodes, breaks) => {
       end = prevNode.value.end;
 
       line = slice(start, end, string);
-      line = insertGlyph(line.length, HYPHEN, line);
+      // line = insertGlyph(line.length, HYPHEN, line);
     } else {
       end = node.value.end;
       line = slice(start, end, string);
@@ -67,7 +67,7 @@ const breakLines = (string, nodes, breaks) => {
 const getNodes = (attributedString, { align }, options) => {
   let start = 0;
 
-  const hyphenWidth = 5;
+  const hyphenWidth = 0; // Default: 5
   const { syllables } = attributedString;
   const hyphenPenalty = options.hyphenationPenalty || (align === 'justify' ? 100 : 600);
 
