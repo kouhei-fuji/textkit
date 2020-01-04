@@ -3,6 +3,7 @@ import unicode from '@react-pdf/unicode-properties';
 
 import empty from '../../attributedString/empty';
 
+const japaneseScripts = ['Han', 'Hiragana', 'Katakana'];
 const ignoredScripts = ['Common', 'Inherited', 'Unknown'];
 
 /**
@@ -26,7 +27,10 @@ const scriptItemizer = (options, attributedString) => {
     const codePoint = char.codePointAt();
     const script = unicode.getScript(codePoint);
 
-    if (script !== lastScript && !ignoredScripts.includes(script)) {
+    if (
+      japaneseScripts.includes(script) ||
+      (script !== lastScript && !ignoredScripts.includes(script))
+    ) {
       if (lastScript !== 'Unknown') {
         res.push({ start: lastIndex, end: index, attributes: { script: lastScript } });
       }
