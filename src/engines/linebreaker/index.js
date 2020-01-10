@@ -72,7 +72,7 @@ const getNodes = (attributedString, { align }, options) => {
   const hyphenPenalty = options.hyphenationPenalty || (align === 'justify' ? 100 : 600);
 
   const result = syllables.reduce((acc, s, index) => {
-    const width = advanceWidthBetween(start, start + s.length, attributedString);
+    const width = s === '\n' ? 0 : advanceWidthBetween(start, start + s.length, attributedString);
 
     if (s.trim() === '') {
       const stretch = (width * opts.width) / opts.stretch;
