@@ -28,7 +28,7 @@ const scalePositions = (run, positions) => {
   });
 
   return R.compose(
-    R.adjust(-1, subCharacterSpacing),
+    // R.adjust(-1, subCharacterSpacing),
     R.map(scalePosition)
   )(positions);
 };
